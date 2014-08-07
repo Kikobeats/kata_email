@@ -21,3 +21,7 @@ describe 'Antispam :: ', ->
   it 'replace AT in a valid email', ->
     Antispam.parser('holaAThotmail.com').should.eql('hola@hotmail.com')
 
+  it 'replace DOT in a valid email', ->
+    Antispam.parser('holaAThotmailDOTcom').should.eql('hola@hotmail.com')
+
+
