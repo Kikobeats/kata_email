@@ -24,4 +24,5 @@ describe 'Antispam :: ', ->
   it 'replace DOT in a valid email', ->
     Antispam.parser('holaAThotmailDOTcom').should.eql('hola@hotmail.com')
 
-
+  it 'doesnt replace if DOT is before the AT', ->
+    Antispam.parser('holaDOThotmailATcom').should.eql('holaDOThotmailATcom')
