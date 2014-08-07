@@ -2,28 +2,41 @@
 # -- Private --------------------------------------------
 
 
+existDOTbeforeAT = (string) ->
+  at_position = string.indexOf('AT')
+  dot_position = string.indexOf('DOT')
+  dot_position < at_position
+
+replaceDOT = (string) ->
+  string.replace('DOT', '.')
+
+replaceAT = (string) ->
+  string.replace('AT', '@')
+
+contains = (string, delimiter) ->
+  string.indexOf(delimiter) > 0
+
+
+
+
+
 # -- Public --------------------------------------------
 class AntiSpam
 
   @parser: (string) ->
 
-    if (string.indexOf('AT') > 0 and string.indexOf('.') > 0)
-      result = string.replace('AT', '@')
-      return result
+    if (contains(string,'AT') and contains(string,'.'))
+      return replaceAT(string)
 
-    if (string.indexOf('AT') > 0 and string.indexOf('DOT') > 0)
-      at_position = string.indexOf('AT')
-      dot_position = string.indexOf('DOT')
-
-      if dot_position < at_position
+    if (contains(string,'AT') and contains(string,'DOT'))
+      if existDOTbeforeAT(string)
         return string
-
       else
-        result = string.replace('AT', '@').replace('DOT', '.')
+        result = replaceAT(string)
+        result = replaceDOT(result)
         return result
 
-    else
-      string
+    string
 
 
 
