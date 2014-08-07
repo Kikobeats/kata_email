@@ -17,9 +17,6 @@ contains = (string, delimiter) ->
   string.indexOf(delimiter) > 0
 
 
-
-
-
 # -- Public --------------------------------------------
 class AntiSpam
 
@@ -37,21 +34,6 @@ class AntiSpam
         return result
 
     string
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # -- Exports --------------------------------------------
 exports = module.exports = AntiSpam
