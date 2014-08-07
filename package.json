@@ -1,0 +1,29 @@
+{
+  "name": "antispam-js",
+  "description": "kata for create antispam library using TDD for the design",
+  "version": "0.0.0",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "dependencies": {
+    "coffee-script": "^1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./index.js",
+  "repository": "Kikobeats/antispam-js",
+  "scripts": {
+    "test": "sh test/test.sh",
+    "prepublish": "npm prune"
+  }
+}
