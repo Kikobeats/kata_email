@@ -16,24 +16,34 @@ replaceAT = (string) ->
 contains = (string, delimiter) ->
   string.indexOf(delimiter) > 0
 
+replace = (string) ->
+  if (contains(string,'AT') and contains(string,'.'))
+    return replaceAT(string)
+  if (contains(string,'AT') and contains(string,'DOT'))
+    if existDOTbeforeAT(string)
+      return string
+    else
+      result = replaceAT(string)
+      result = replaceDOT(result)
+      return result
+
+  string
+
+createParagraph = (string) ->
+  string.join(" ")
 
 # -- Public --------------------------------------------
 class AntiSpam
 
   @parser: (string) ->
 
-    if (contains(string,'AT') and contains(string,'.'))
-      return replaceAT(string)
+    arr = string.split(" ")
 
-    if (contains(string,'AT') and contains(string,'DOT'))
-      if existDOTbeforeAT(string)
-        return string
-      else
-        result = replaceAT(string)
-        result = replaceDOT(result)
-        return result
+    for word, index in arr
+      arr[index] = replace(word)
 
-    string
+    arr = createParagraph(arr)
+    arr
 
 # -- Exports --------------------------------------------
 exports = module.exports = AntiSpam

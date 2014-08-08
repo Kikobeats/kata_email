@@ -26,3 +26,11 @@ describe 'Antispam :: ', ->
 
   it 'doesnt replace if DOT is before the AT', ->
     Antispam.parser('holaDOThotmailATcom').should.eql('holaDOThotmailATcom')
+    Antispam.parser('holaDOTcom').should.eql('holaDOTcom')
+    Antispam.parser('ATholaDOTcom').should.eql('ATholaDOTcom')
+
+  it 'translate the mail in a prhrase', ->
+    Antispam.parser('email emailATdomainDOTcom').should.eql('email email@domain.com')
+
+  it 'two string when the first contain AT and the second string content a DOT',  ->
+    Antispam.parser('holaAThola holaDOThola').should.eql('holaAThola holaDOThola')
