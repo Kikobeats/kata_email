@@ -8,11 +8,12 @@
     "url": "https://github.com/Kikobeats"
   },
   "dependencies": {
-    "coffee-script": "^1.7.1"
+    "coffee-script": "*"
   },
   "devDependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "coffeeify": "*"
   },
   "engines": {
     "node": "*"

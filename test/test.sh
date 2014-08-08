@@ -17,7 +17,6 @@ function run {
   --reporter spec \
   --timeout 10000 \
   --slow 300 \
-  --growl \
   --watch
   "$@"
 }

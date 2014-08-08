@@ -1,6 +1,12 @@
 # -- Public --------------------------------------------
 class MailNormalizer
 
+  _replaceAll: (text, search, newstring) ->
+    text.replace(new RegExp(search, 'g'), newstring)
+
+  _countNumberOfCharacter: (text, char) ->
+    text.split(char).length-1
+
   _existDOTbeforeAT: (word) ->
     word.indexOf('DOT') < word.indexOf('AT')
 
@@ -11,8 +17,8 @@ class MailNormalizer
     if (@_contains(word,'AT') and @_contains(word,'.'))
       return word.replace('AT', '@')
     if (@_contains(word,'AT') and @_contains(word,'DOT'))
-      unless @_existDOTbeforeAT(word)
-        return word.replace('AT', '@').replace('DOT', '.')
+      result = word.replace('AT', '@')
+      return @_replaceAll(result, 'DOT', '.')
     word
 
   parse: (text) ->
