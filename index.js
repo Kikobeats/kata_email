@@ -6,11 +6,7 @@ Dependencies
  // Register CoffeeScript if exits
  if(CoffeeScript.register) CoffeeScript.register();
 
-
-antispam = require('./lib/antispam');
-
-
 /*
 Exports
  */
-module.exports = antispam;
+module.exports = require('./lib/mailNormalizer');
